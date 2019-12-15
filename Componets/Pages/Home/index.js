@@ -65,6 +65,7 @@ const Home: NavigationStackScreenComponent<Props> = ({
   const screenWidth = Math.round(Dimensions.get('window').width);
   useEffect(() => {
     onFetchProducts();
+    console.log('Get products');
   }, [onFetchProducts]);
 
   useEffect(() => {
@@ -161,7 +162,6 @@ const Home: NavigationStackScreenComponent<Props> = ({
                 maximumValue={maxValueProducts}
                 minimumTrackTintColor="#111d5e"
                 thumbTintColor="#111d5e"
-                step={2}
                 value={valueFilterSliderPrice}
                 onValueChange={value => setValueFilterSliderPrice(value)}
                 // maximumTrackTintColor="#000000"
@@ -191,7 +191,6 @@ const Home: NavigationStackScreenComponent<Props> = ({
                 maximumValue={maxValueQuantity}
                 minimumTrackTintColor="#111d5e"
                 thumbTintColor="#111d5e"
-                step={2}
                 value={valueSliderQuantity}
                 onValueChange={value => setValueSliderQuantity(value)}
                 // maximumTrackTintColor="#000000"

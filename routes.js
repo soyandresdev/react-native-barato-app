@@ -12,6 +12,7 @@ import {createBottomTabNavigator} from 'react-navigation-tabs';
 import HomeStack from './Componets/Pages/Home/index';
 import CategoryStack from './Componets/Pages/Category/index';
 import CheckoutStack from './Componets/Pages/Checkout/index';
+import Cart from './Componets/Molecules/Cart/index';
 import {createStackNavigator} from 'react-navigation-stack';
 
 const HomeStackRoute = createStackNavigator(
@@ -21,14 +22,17 @@ const HomeStackRoute = createStackNavigator(
     },
   },
   {
-    defaultNavigationOptions: {
-      headerStyle: {
-        backgroundColor: '#111d5e',
-      },
-      headerTitleStyle: {
-        color: '#FFF',
-        fontWeight: 'bold',
-      },
+    defaultNavigationOptions: ({navigation}) => {
+      return {
+        headerStyle: {
+          backgroundColor: '#111d5e',
+        },
+        headerTitleStyle: {
+          color: '#FFF',
+          fontWeight: 'bold',
+        },
+        headerRight: <Cart navigation={navigation} />,
+      };
     },
   },
 );
@@ -41,14 +45,17 @@ const CategoryStackRoute = createStackNavigator(
   },
   {
     initialRouteName: 'Category',
-    defaultNavigationOptions: {
-      headerStyle: {
-        backgroundColor: '#111d5e',
-      },
-      headerTitleStyle: {
-        color: '#FFF',
-        fontWeight: 'bold',
-      },
+    defaultNavigationOptions: ({navigation}) => {
+      return {
+        headerStyle: {
+          backgroundColor: '#111d5e',
+        },
+        headerTitleStyle: {
+          color: '#FFF',
+          fontWeight: 'bold',
+        },
+        headerRight: <Cart navigation={navigation} />,
+      };
     },
   },
 );
@@ -70,14 +77,15 @@ const AppNavigator = createBottomTabNavigator(
     defaultNavigationOptions: ({navigation}) => ({
       tabBarIcon: ({tintColor, focused, horizontal}) => {
         const {routeName} = navigation.state;
-        let iconName;
-        console.log(routeName);
+        let iconName = 'ios-appstore';
         if (routeName === 'Home') {
           iconName = 'ios-home';
         } else if (routeName === 'Category') {
           iconName = 'ios-apps';
         } else if (routeName === 'Checkout') {
           iconName = 'ios-archive';
+        } else {
+          iconName = 'ios-appstore';
         }
         return <Icon name={iconName} color={tintColor} size={25} />;
       },

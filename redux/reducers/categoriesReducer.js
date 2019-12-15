@@ -1,13 +1,13 @@
-import {FETCH_PRODUCTS} from '../actions/types';
-import {getProducts} from '../../Data/index';
+import {FETCH_CATEGORIES} from '../actions/types';
+import {getCategories} from '../../Data/index';
 
-const products = getProducts();
+const categories = getCategories();
 const initialState = {
-  items: products.products,
+  items: categories.categories,
 };
 export default function(state = initialState, action) {
   switch (action.type) {
-    case FETCH_PRODUCTS:
+    case FETCH_CATEGORIES:
       return {
         ...state,
         items: action.payload,

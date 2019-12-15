@@ -1,9 +1,9 @@
 import React from 'react';
 import {View, Text, Image, StyleSheet, TouchableOpacity} from 'react-native';
 
-function Product({product}: Props): ReactElement {
+const Product: () => React$Node = ({product, addItemsToCart}) => {
   const addToCart = () => {
-    this.props.addItemsToCart(this.props.item);
+    addItemsToCart(product);
   };
   return (
     <View style={styles.container}>
@@ -22,7 +22,7 @@ function Product({product}: Props): ReactElement {
       </View>
     </View>
   );
-}
+};
 
 const styles = StyleSheet.create({
   container: {

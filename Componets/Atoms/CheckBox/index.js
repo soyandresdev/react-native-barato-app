@@ -2,7 +2,7 @@ import React from 'react';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import {TouchableOpacity, Text, StyleSheet} from 'react-native';
 
-const CheckBox = ({
+const CheckBox: () => React$Node = ({
   selected,
   onPress,
   style,

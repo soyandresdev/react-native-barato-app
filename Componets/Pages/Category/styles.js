@@ -16,7 +16,7 @@ export default StyleSheet.create({
   title: {
     fontSize: 24,
     fontWeight: '600',
-    color: '#FFF',
+    color: '#000',
     justifyContent: 'center',
     marginTop: 10,
     marginLeft: 10,

@@ -3,12 +3,29 @@
  */
 
 import React from 'react';
+import {filter} from 'lodash';
 import {connect} from 'react-redux';
-import {View, Text, ImageBackground} from 'react-native';
+import {View, Text, ImageBackground, ScrollView} from 'react-native';
 import {NavigationStackScreenComponent} from 'react-navigation-stack';
+import Accordion from '../../Organisms/Accordion/index';
 import styles from './styles';
 
-const Category: NavigationStackScreenComponent = () => {
+const Category: NavigationStackScreenComponent = ({categories, products}) => {
+  const renderItemAccordion = data => {
+    return data.map(item => {
+      const filterProductsForCategory = filter(products, {
+        sublevel_id: item.id,
+      });
+      return (
+        <Accordion
+          key={item.name}
+          {...item}
+          products={filterProductsForCategory}>
+          {item.sublevels && <>{renderItemAccordion(item.sublevels)}</>}
+        </Accordion>
+      );
+    });
+  };
   return (
     <>
       <View style={styles.body}>
@@ -18,9 +35,10 @@ const Category: NavigationStackScreenComponent = () => {
               uri: 'https://picsum.photos/id/200/200/300',
             }}
             style={{width: '100%', height: '100%'}}>
-            <Text style={styles.title}>Categories</Text>
+            <Text style={styles.title}>List Products</Text>
           </ImageBackground>
         </View>
+        <ScrollView>{renderItemAccordion(categories)}</ScrollView>
       </View>
     </>
   );
@@ -31,6 +49,7 @@ Category.navigationOptions = {
 };
 
 const mapStateToProps = state => ({
+  categories: state.categories.items,
   products: state.products.items,
 });
 
