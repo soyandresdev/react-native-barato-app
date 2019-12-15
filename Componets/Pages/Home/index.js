@@ -1,12 +1,11 @@
 /**
- * @format
+ *
  * @flow
  */
 
 import React, {useEffect, useState} from 'react';
-import {orderBy} from 'lodash';
+import {orderBy, filter} from 'lodash';
 import {
-  StyleSheet,
   View,
   Text,
   FlatList,
@@ -14,6 +13,7 @@ import {
   TouchableOpacity,
   Dimensions,
   Picker,
+  ScrollView,
 } from 'react-native';
 import {NavigationStackScreenComponent} from 'react-navigation-stack';
 import {connect} from 'react-redux';
@@ -22,6 +22,7 @@ import {addToCart} from '../../../redux/actions/cartActions';
 import {fetchProducts} from '../../../redux/actions/productAction';
 import Product from '../../Molecules/Product/index';
 import CheckBox from '../../Atoms/CheckBox/index';
+import styles from './styles';
 
 type Props = {
   onAddToCart: Function,
@@ -49,7 +50,6 @@ const Home: NavigationStackScreenComponent<Props> = ({
   const maxValueProducts = Math.max(...priceProducts);
   const minValueQuantity = Math.min(...quantityProducts);
   const maxValueQuantity = Math.max(...quantityProducts);
-  const [termsAccepted, setTermsAccepted] = useState(false);
   const [showFilter, setShowFilter] = useState(false);
   const [valueFilterSliderPrice, setValueFilterSliderPrice] = useState(
     maxValueProducts,
@@ -57,23 +57,74 @@ const Home: NavigationStackScreenComponent<Props> = ({
   const [valueSliderQuantity, setValueSliderQuantity] = useState(
     maxValueQuantity,
   );
+  const [termsAccepted, setTermsAccepted] = useState(false);
   const [orderByType, setOrderByType] = useState('price');
+  const [showResetButton, setShowResetButton] = useState(false);
+  const [filterEjectCount, setFilterEjectCount] = useState(0);
+
   const screenWidth = Math.round(Dimensions.get('window').width);
   useEffect(() => {
     onFetchProducts();
   }, [onFetchProducts]);
 
+  useEffect(() => {
+    if (
+      valueFilterSliderPrice !== maxValueProducts ||
+      valueSliderQuantity !== maxValueQuantity ||
+      termsAccepted
+    ) {
+      setShowResetButton(true);
+    } else {
+      setShowResetButton(false);
+      setFilterEjectCount(0);
+    }
+  }, [
+    valueFilterSliderPrice,
+    valueSliderQuantity,
+    termsAccepted,
+    maxValueProducts,
+    maxValueQuantity,
+  ]);
+
   const addItemsToCart = product => {
     onAddToCart(product);
   };
-  const orderFilterData = orderBy(products, [`${orderByType}`], ['desc']);
+  const resetFilter = product => {
+    setValueFilterSliderPrice(maxValueProducts);
+    setValueSliderQuantity(maxValueQuantity);
+    setTermsAccepted(false);
+    setShowResetButton(false);
+    setFilterEjectCount(0);
+  };
+  let orderFilterData = orderBy(products, [`${orderByType}`], ['desc']);
+  if (
+    valueFilterSliderPrice !== maxValueProducts ||
+    valueSliderQuantity !== maxValueQuantity ||
+    termsAccepted
+  ) {
+    if (valueFilterSliderPrice !== maxValueProducts) {
+      orderFilterData = filter(orderFilterData, function(o) {
+        return (
+          Number(o.price.replace(/[^0-9\.]+/g, '')) < valueFilterSliderPrice
+        );
+      });
+    }
+    if (valueSliderQuantity !== maxValueQuantity) {
+      orderFilterData = filter(orderFilterData, function(o) {
+        return o.quantity < valueFilterSliderPrice;
+      });
+    }
+    if (termsAccepted) {
+      orderFilterData = filter(orderFilterData, {available: true});
+    }
+  }
   return (
     <>
       <View style={styles.body}>
         <View style={styles.sectionTitle}>
           <ImageBackground
             source={{
-              uri: `https://picsum.photos/id/400/200/300`,
+              uri: 'https://picsum.photos/id/400/200/300',
             }}
             style={{width: '100%', height: '100%'}}>
             <Text style={styles.title}>Products</Text>
@@ -90,8 +141,12 @@ const Home: NavigationStackScreenComponent<Props> = ({
           </ImageBackground>
         </View>
         {showFilter && (
-          <View style={styles.filterView}>
+          <ScrollView style={styles.filterView}>
             <Text style={styles.filterViewTitle}>Filter</Text>
+            <Text style={styles.filterViewTitleSecond}>
+              {' '}
+              Total Filter: {orderFilterData.length}
+            </Text>
             <View style={styles.filterViewItem}>
               <Text style={styles.filterViewItemTitle}>
                 Price: $
@@ -156,7 +211,28 @@ const Home: NavigationStackScreenComponent<Props> = ({
                 text="Filter by only available"
               />
             </View>
-          </View>
+            <View style={styles.filterViewItem}>
+              <View style={styles.fAilterViewItemActions}>
+                <TouchableOpacity
+                  onPress={() => {
+                    setFilterEjectCount(filterEjectCount + 1);
+                    setShowFilter(!showFilter);
+                  }}
+                  style={styles.filterBtnActions}>
+                  <Text style={styles.textBtn}>Filter</Text>
+                </TouchableOpacity>
+                {showResetButton && (
+                  <TouchableOpacity
+                    onPress={() => {
+                      resetFilter();
+                    }}
+                    style={styles.filterBtnActions}>
+                    <Text style={styles.textBtn}>Reset</Text>
+                  </TouchableOpacity>
+                )}
+              </View>
+            </View>
+          </ScrollView>
         )}
         {!showFilter && (
           <View style={styles.sectionList}>
@@ -197,75 +273,6 @@ Home.navigationOptions = {
 
 const mapStateToProps = state => ({
   products: state.products.items,
-});
-
-const styles = StyleSheet.create({
-  body: {
-    backgroundColor: '#FFF',
-    flex: 1,
-  },
-  sectionTitle: {
-    height: 100,
-  },
-  title: {
-    fontSize: 24,
-    fontWeight: '600',
-    color: '#FFF',
-    justifyContent: 'center',
-    marginTop: 10,
-    marginLeft: 10,
-  },
-  sectionList: {
-    justifyContent: 'center',
-    flex: 1,
-  },
-  sectionDescription: {
-    marginTop: 8,
-    fontSize: 18,
-    fontWeight: '400',
-    color: '#000',
-  },
-  highlight: {
-    fontWeight: '700',
-  },
-  filterBox: {
-    justifyContent: 'flex-end',
-    flexDirection: 'row',
-  },
-  filterBtn: {
-    borderRadius: 30,
-    margin: 10,
-    backgroundColor: '#fff',
-    justifyContent: 'center',
-    flexDirection: 'row',
-    width: 100,
-  },
-  textBtn: {
-    color: '#111d5e',
-    fontSize: 16,
-    padding: 10,
-  },
-  filterView: {
-    padding: 15,
-  },
-  filterViewTitle: {
-    fontSize: 24,
-    fontWeight: '600',
-    color: '#000',
-  },
-  filterViewItem: {
-    paddingLeft: 10,
-    marginTop: 20,
-  },
-  filterViewItemTitle: {
-    fontSize: 18,
-    fontWeight: '600',
-    color: '#000',
-  },
-  filterViewSliderTotal: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-  },
 });
 
 export default connect(mapStateToProps, {

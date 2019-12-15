@@ -1,22 +1,25 @@
 /**
- * @format
  * @flow
  */
 
 import React from 'react';
-import {StyleSheet, View, Text} from 'react-native';
-import {
-  NavigationStackScreenComponent,
-  createStackNavigator,
-} from 'react-navigation-stack';
-import categories from '../../../Data/categories.json';
+import {connect} from 'react-redux';
+import {View, Text, ImageBackground} from 'react-native';
+import {NavigationStackScreenComponent} from 'react-navigation-stack';
+import styles from './styles';
 
 const Category: NavigationStackScreenComponent = () => {
   return (
     <>
       <View style={styles.body}>
-        <View style={styles.sectionContainer}>
-          <Text style={styles.sectionTitle}>Categories</Text>
+        <View style={styles.header}>
+          <ImageBackground
+            source={{
+              uri: 'https://picsum.photos/id/200/200/300',
+            }}
+            style={{width: '100%', height: '100%'}}>
+            <Text style={styles.title}>Categories</Text>
+          </ImageBackground>
         </View>
       </View>
     </>
@@ -27,44 +30,8 @@ Category.navigationOptions = {
   title: 'Categories',
 };
 
-const styles = StyleSheet.create({
-  body: {
-    backgroundColor: '#FFF',
-  },
-  sectionContainer: {
-    marginTop: 32,
-    paddingHorizontal: 24,
-  },
-  sectionTitle: {
-    fontSize: 24,
-    fontWeight: '600',
-    color: '#000',
-  },
-  sectionDescription: {
-    marginTop: 8,
-    fontSize: 18,
-    fontWeight: '400',
-    color: '#000',
-  },
-  highlight: {
-    fontWeight: '700',
-  },
+const mapStateToProps = state => ({
+  products: state.products.items,
 });
 
-const CategoryStack = createStackNavigator(
-  {Category},
-  {
-    initialRouteName: 'Category',
-    defaultNavigationOptions: {
-      headerStyle: {
-        backgroundColor: '#111d5e',
-      },
-      headerTitleStyle: {
-        color: '#FFF',
-        fontWeight: 'bold',
-      },
-    },
-  },
-);
-
-export default CategoryStack;
+export default connect(mapStateToProps, {})(Category);

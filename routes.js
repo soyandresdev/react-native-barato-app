@@ -33,13 +33,33 @@ const HomeStackRoute = createStackNavigator(
   },
 );
 
+const CategoryStackRoute = createStackNavigator(
+  {
+    Category: {
+      screen: CategoryStack,
+    },
+  },
+  {
+    initialRouteName: 'Category',
+    defaultNavigationOptions: {
+      headerStyle: {
+        backgroundColor: '#111d5e',
+      },
+      headerTitleStyle: {
+        color: '#FFF',
+        fontWeight: 'bold',
+      },
+    },
+  },
+);
+
 const AppNavigator = createBottomTabNavigator(
   {
     Home: {
       screen: HomeStackRoute,
     },
     Category: {
-      screen: CategoryStack,
+      screen: CategoryStackRoute,
     },
     Checkout: {
       screen: CheckoutStack,
