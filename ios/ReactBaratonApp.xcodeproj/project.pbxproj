@@ -161,7 +161,6 @@
 				EF9D64BD19EBAA3811CC5562 /* Pods-ReactBaratonAppTests.debug.xcconfig */,
 				C710EE706267C9FFC0D1FCC1 /* Pods-ReactBaratonAppTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -309,6 +308,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 				Base,
 			);

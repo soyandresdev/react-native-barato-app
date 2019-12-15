@@ -24,6 +24,14 @@ You have to create an android virtual machine or connect your cell phone:
 $ npx react-native run-android
 ```
 
+## Project Run Android
+
+You need Xcode:
+
+```sh
+$ npx react-native run-ios
+```
+
 If you don't know how to do this you can see the following link:
 [Link- getting started RN](https://facebook.github.io/react-native/docs/getting-started)
 
