@@ -20,6 +20,7 @@
 		2DCD954D1E0B4F2C00145EB5 /* ReactBaratonAppTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* ReactBaratonAppTests.m */; };
 		7EBBF159071AAFEBC7271902 /* libPods-ReactBaratonApp-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6F8A790078BD3A268681514F /* libPods-ReactBaratonApp-tvOS.a */; };
 		E1EDC90D5CF527A9CB98A9AC /* libPods-ReactBaratonApp-tvOSTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C42668B9E769B4F4203DB16D /* libPods-ReactBaratonApp-tvOSTests.a */; };
+		E96FBBFC23A72F4C00D95FA8 /* main.jsbundle in Resources */ = {isa = PBXBuildFile; fileRef = E96FBBFB23A72F4C00D95FA8 /* main.jsbundle */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,7 +41,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		008F07F21AC5B25A0029DE68 /* main.jsbundle */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = main.jsbundle; sourceTree = "<group>"; };
 		00E356EE1AD99517003FC87E /* ReactBaratonAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ReactBaratonAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		00E356F11AD99517003FC87E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		00E356F21AD99517003FC87E /* ReactBaratonAppTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ReactBaratonAppTests.m; sourceTree = "<group>"; };
@@ -64,6 +64,7 @@
 		C42668B9E769B4F4203DB16D /* libPods-ReactBaratonApp-tvOSTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ReactBaratonApp-tvOSTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C710EE706267C9FFC0D1FCC1 /* Pods-ReactBaratonAppTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ReactBaratonAppTests.release.xcconfig"; path = "Target Support Files/Pods-ReactBaratonAppTests/Pods-ReactBaratonAppTests.release.xcconfig"; sourceTree = "<group>"; };
 		C8FC9529263B59FADF1C8B53 /* Pods-ReactBaratonApp-tvOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ReactBaratonApp-tvOS.release.xcconfig"; path = "Target Support Files/Pods-ReactBaratonApp-tvOS/Pods-ReactBaratonApp-tvOS.release.xcconfig"; sourceTree = "<group>"; };
+		E96FBBFB23A72F4C00D95FA8 /* main.jsbundle */ = {isa = PBXFileReference; lastKnownFileType = text; path = main.jsbundle; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		ED2971642150620600B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = Platforms/AppleTVOS.platform/Developer/SDKs/AppleTVOS12.0.sdk/System/Library/Frameworks/JavaScriptCore.framework; sourceTree = DEVELOPER_DIR; };
 		EF9D64BD19EBAA3811CC5562 /* Pods-ReactBaratonAppTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ReactBaratonAppTests.debug.xcconfig"; path = "Target Support Files/Pods-ReactBaratonAppTests/Pods-ReactBaratonAppTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -125,7 +126,7 @@
 		13B07FAE1A68108700A75B9A /* ReactBaratonApp */ = {
 			isa = PBXGroup;
 			children = (
-				008F07F21AC5B25A0029DE68 /* main.jsbundle */,
+				E96FBBFB23A72F4C00D95FA8 /* main.jsbundle */,
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
 				13B07FB01A68108700A75B9A /* AppDelegate.m */,
 				13B07FB51A68108700A75B9A /* Images.xcassets */,
@@ -337,6 +338,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E96FBBFC23A72F4C00D95FA8 /* main.jsbundle in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */,
 			);

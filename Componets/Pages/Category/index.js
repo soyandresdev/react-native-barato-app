@@ -7,7 +7,7 @@ import {filter} from 'lodash';
 import {connect} from 'react-redux';
 import {View, Text, ImageBackground, ScrollView} from 'react-native';
 import {NavigationStackScreenComponent} from 'react-navigation-stack';
-import Accordion from '../../Organisms/Accordion/index';
+import Accordion from '../../Atoms/Accordion/index';
 import styles from './styles';
 
 const Category: NavigationStackScreenComponent = ({categories, products}) => {

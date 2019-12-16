@@ -12,7 +12,6 @@ const CartItems: () => React$Node = ({
   addCountCart: onAddCountCart,
   countCart,
 }) => {
-  console.log(`Numero de productos: ${countCart[item.id]}`);
   return (
     <View style={styles.container}>
       <View style={styles.productDes}>
@@ -20,7 +19,7 @@ const CartItems: () => React$Node = ({
           <Text style={styles.text}>{item.name}</Text>
           <View style={styles.productActions}>
             <Counter
-              start={1}
+              start={countCart[item.id]}
               min={1}
               max={item.quantity}
               onChange={value => {
@@ -81,7 +80,7 @@ const styles = StyleSheet.create({
     margin: 10,
   },
   text: {
-    fontSize: 14,
+    fontSize: 24,
     padding: 10,
   },
   productActions: {

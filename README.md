@@ -24,7 +24,7 @@ You have to create an android virtual machine or connect your cell phone:
 $ npx react-native run-android
 ```
 
-## Project Run Android
+## Project Run Ios
 
 You need Xcode:
 

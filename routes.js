@@ -60,6 +60,28 @@ const CategoryStackRoute = createStackNavigator(
   },
 );
 
+const CheckoutStackRoute = createStackNavigator(
+  {
+    Checkout: {
+      screen: CheckoutStack,
+    },
+  },
+  {
+    initialRouteName: 'Checkout',
+    defaultNavigationOptions: ({navigation}) => {
+      return {
+        headerStyle: {
+          backgroundColor: '#111d5e',
+        },
+        headerTitleStyle: {
+          color: '#FFF',
+          fontWeight: 'bold',
+        },
+      };
+    },
+  },
+);
+
 const AppNavigator = createBottomTabNavigator(
   {
     Home: {
@@ -69,7 +91,7 @@ const AppNavigator = createBottomTabNavigator(
       screen: CategoryStackRoute,
     },
     Checkout: {
-      screen: CheckoutStack,
+      screen: CheckoutStackRoute,
     },
   },
   {

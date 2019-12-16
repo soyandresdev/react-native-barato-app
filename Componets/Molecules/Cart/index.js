@@ -2,7 +2,7 @@ import React, {useState, useEffect, useCallback} from 'react';
 import {StyleSheet, Text, TouchableOpacity, Animated} from 'react-native';
 import {connect} from 'react-redux';
 
-const Cart: () => React$Node = ({cartItems, cartTotal, navigation}) => {
+const Cart: () => React$Node = ({cartItems, navigation}) => {
   const [opacity] = useState(new Animated.Value(1));
 
   useEffect(() => {

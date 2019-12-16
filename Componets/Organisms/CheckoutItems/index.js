@@ -53,6 +53,7 @@ const styles = StyleSheet.create({
   text: {
     textAlign: 'center',
     color: 'red',
+    fontSize: 26,
   },
   anncText: {
     textAlign: 'center',
