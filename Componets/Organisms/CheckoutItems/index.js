@@ -22,9 +22,7 @@ const CheckoutItems: () => React$Node = ({cartItems, cartTotal, countCart}) => {
             <CartItems countCart={countCart} item={item} index={index} />
           )}
           keyExtractor={item => item.id}
-          ItemSeparatorComponent={() => (
-            <View style={{height: 0.3, backgroundColor: '#34495e90'}} />
-          )}
+          ItemSeparatorComponent={() => <View style={styles.line} />}
         />
         <Text style={styles.text}>Total: $ {total.toFixed(2)}</Text>
       </View>
@@ -59,5 +57,6 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     color: '#fff',
   },
+  line: {height: 0.3, backgroundColor: '#34495e90'},
 });
 export default CheckoutItems;

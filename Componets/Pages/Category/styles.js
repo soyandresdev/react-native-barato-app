@@ -30,4 +30,8 @@ export default StyleSheet.create({
   highlight: {
     fontWeight: '700',
   },
+  imagenBackground: {
+    width: '100%',
+    height: '100%',
+  },
 });

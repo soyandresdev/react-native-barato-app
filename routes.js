@@ -15,27 +15,27 @@ import CheckoutStack from './Componets/Pages/Checkout/index';
 import Cart from './Componets/Molecules/Cart/index';
 import {createStackNavigator} from 'react-navigation-stack';
 
-const HomeStackRoute = createStackNavigator(
-  {
-    Home: {
-      screen: HomeStack,
-    },
-  },
-  {
-    defaultNavigationOptions: ({navigation}) => {
-      return {
-        headerStyle: {
-          backgroundColor: '#111d5e',
-        },
-        headerTitleStyle: {
-          color: '#FFF',
-          fontWeight: 'bold',
-        },
-        headerRight: <Cart navigation={navigation} />,
-      };
-    },
-  },
-);
+// const HomeStackRoute = createStackNavigator(
+//   {
+//     Home: {
+//       screen: HomeStack,
+//     },
+//   },
+//   {
+//     defaultNavigationOptions: ({navigation}) => {
+//       return {
+//         headerStyle: {
+//           backgroundColor: '#111d5e',
+//         },
+//         headerTitleStyle: {
+//           color: '#FFF',
+//           fontWeight: 'bold',
+//         },
+//         headerRight: <Cart navigation={navigation} />,
+//       };
+//     },
+//   },
+// );
 
 const CategoryStackRoute = createStackNavigator(
   {
@@ -85,7 +85,7 @@ const CheckoutStackRoute = createStackNavigator(
 const AppNavigator = createBottomTabNavigator(
   {
     Home: {
-      screen: HomeStackRoute,
+      screen: HomeStack,
     },
     Category: {
       screen: CategoryStackRoute,
@@ -112,12 +112,12 @@ const AppNavigator = createBottomTabNavigator(
         return <Icon name={iconName} color={tintColor} size={25} />;
       },
       tabBarOptions: {
-        activeTintColor: '#FFF',
+        activeTintColor: '#111d5e',
         labelStyle: {
           fontSize: 12,
         },
         style: {
-          backgroundColor: '#111d5e',
+          backgroundColor: 'transparent',
         },
       },
       headerStyle: {

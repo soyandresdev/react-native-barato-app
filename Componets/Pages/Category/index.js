@@ -34,7 +34,7 @@ const Category: NavigationStackScreenComponent = ({categories, products}) => {
             source={{
               uri: 'https://picsum.photos/id/200/200/300',
             }}
-            style={{width: '100%', height: '100%'}}>
+            style={styles.imagenBackground}>
             <Text style={styles.title}>List Products</Text>
           </ImageBackground>
         </View>

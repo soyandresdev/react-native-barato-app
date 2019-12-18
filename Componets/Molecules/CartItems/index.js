@@ -52,7 +52,7 @@ const CartItems: () => React$Node = ({
                 );
               }}>
               <Icon
-                style={{marginLeft: 20}}
+                style={styles.icon}
                 name="delete"
                 size={30}
                 color="#111d5e"
@@ -87,6 +87,9 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
+  },
+  icon: {
+    marginLeft: 20,
   },
 });
 

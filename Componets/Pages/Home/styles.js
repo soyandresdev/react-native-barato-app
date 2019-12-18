@@ -1,12 +1,17 @@
-import {StyleSheet} from 'react-native';
+import {StyleSheet, Platform, Dimensions} from 'react-native';
 
+const screenWidth = Math.round(Dimensions.get('window').width);
 export default StyleSheet.create({
   body: {
     backgroundColor: '#FFF',
     flex: 1,
   },
+  imagenBackground: {
+    width: '100%',
+    height: '100%',
+  },
   sectionTitle: {
-    height: 100,
+    height: 140,
   },
   title: {
     fontSize: 24,
@@ -17,8 +22,8 @@ export default StyleSheet.create({
     marginLeft: 10,
   },
   sectionList: {
-    justifyContent: 'center',
     flex: 1,
+    padding: 10,
   },
   sectionDescription: {
     marginTop: 8,
@@ -83,5 +88,40 @@ export default StyleSheet.create({
   filterViewSliderTotal: {
     flexDirection: 'row',
     justifyContent: 'space-between',
+  },
+  selectTypes: {
+    height: 50,
+    width: 100,
+  },
+  line: {height: 0.5, backgroundColor: '#34495e90'},
+  boxSearch: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    backgroundColor: 'white',
+    paddingHorizontal: 10,
+    marginHorizontal: 20,
+    shadowOffset: {width: 0, height: 0},
+    shadowColor: 'black',
+    shadowOpacity: 0.2,
+    elevation: 1,
+    marginTop: Platform.OS == 'android' ? 30 : null,
+    borderRadius: 10,
+  },
+  searchTextInput: {
+    flex: 1,
+    fontWeight: '700',
+    backgroundColor: 'white',
+  },
+  searchIcon: {
+    marginRight: 10,
+  },
+  categoryTitle: {
+    fontSize: 24,
+    fontWeight: '700',
+    // paddingHorizontal: 20,
+  },
+  boxCategory: {height: 130, marginTop: 20},
+  sliderFilter: {
+    width: screenWidth - 40,
   },
 });
